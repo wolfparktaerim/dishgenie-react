@@ -17,22 +17,36 @@ export default function Home() {
   const [showLogin, setShowLogin] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [videoId] = useState('zw8Ao6VfDog');
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // Default authentication state
 
   useEffect(() => {
     animateComponents();
   }, []);
 
-  const animateComponents = () => {
+   const animateComponents = () => {
     const components = document.querySelectorAll('.animate-up');
     components.forEach((component, index) => {
       (component as HTMLElement).style.animationDelay = `${index * 0.2}s`;
     });
   };
+  
+  const handleLogin = () => {
+    // Perform actual login logic here
+    // localStorage.setItem('authToken', token);
+    setIsAuthenticated(true);
+    setShowLogin(false);
+  };
+  
+  const handleLogout = () => {
+    // Perform actual logout logic here
+    // localStorage.removeItem('authToken');
+    setIsAuthenticated(false);
+  };
 
   return (
     <div className="relative">
       {/* Login Modal */}
-      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      {showLogin && <LoginModal onLogin={()=>handleLogin()} onClose={() => setShowLogin(false)} />}
 
       {/* Video Modal */}
       {showVideo && (
@@ -54,7 +68,11 @@ export default function Home() {
 
       {/* Content container */}
       <div className="relative min-h-screen">
-        <Navigation />
+        <Navigation 
+          isAuthenticated={isAuthenticated} 
+          onLogin={() => setShowLogin(true)} 
+          onLogout={handleLogout} 
+        />
         <main className="relative">
           <div className="animated-container">
             <Carousel  />

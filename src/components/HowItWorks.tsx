@@ -95,9 +95,9 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ id, className }) => {
   }, []);
 
   return (
-    <section className="py-12 bg-gradient-to-b from-gray-50 to-white" id={id}>
-      <div className="container mx-auto px-4">
-        <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">
+    <section className="py-12 bg-gradient-to-b from-gray-50 to-white" >
+      <div className="container mx-auto px-4" id={id}>
+        <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800" >
           How it <span className="text-purple-600">Works</span>
         </h3>
         
@@ -145,7 +145,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ id, className }) => {
               <img 
                 src="/app_ss.png" 
                 alt="How it works demonstration" 
-                className={`w-full h-full object-cover transition-all duration-500 ${isModalVisible ? 'blur-sm' : ''}`}
+                className={`w-full h-full object-cover transition-all duration-500 ${isModalVisible ? 'blur-[2px]' : ''}`}
               />
             </div>
             
