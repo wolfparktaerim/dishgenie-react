@@ -1,5 +1,9 @@
 // src/components/modals/LoginModal.tsx
 
+/*
+ Login Modal: nothing much to explain, for user to login in. Currently it is just show, anyone with any email and password is able to log in and use the website's features.
+*/
+
 'use client';
 
 import { useState } from 'react';
@@ -11,6 +15,7 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -33,7 +38,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
     try {
 
       setTimeout(() => {
-        // For demonstration, we'll always succeed
+        // For now it's always a success for easier implementation
         if (rememberMe) {
           // Save credentials or token in localStorage or cookies
           localStorage.setItem('rememberedEmail', email);
@@ -43,6 +48,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
         onLogin(); 
       }, 1000);
     } catch (err) {
+      console.log(err)
       setError('Login failed. Please check your credentials and try again.');
       setLoading(false);
     }
@@ -51,6 +57,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-opacity-50 backdrop-blur-sm">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
+
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b">
           <h2 className="text-2xl font-semibold text-gray-800">Welcome Back</h2>
@@ -166,7 +173,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onLogin }) => {
               {/* Sign Up Link */}
               <div className="text-center mt-4">
                 <p className="text-sm text-gray-600">
-                  Don't have an account?{' '}
+                  Don&apos;t have an account?{' '}
                   <a href="#" className="font-medium text-purple-600 hover:text-purple-500">
                     Sign up
                   </a>

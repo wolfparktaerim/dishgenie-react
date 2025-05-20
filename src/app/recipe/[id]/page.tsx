@@ -1,7 +1,13 @@
 // src/app/recipe/page.tsx
 
-// This is the main view of the recipe page 
-// It displays recipe information of a specific recipe chosen, such as the ingredients, instructions and nutritional label
+/*
+ Recipe detail page displaying complete information about a recipe including basic information, ingredients, instructions, and nutrition facts.
+ 
+ Fetches recipe data from Spoonacular API and nutrition data from Edamam API (API keys are located in the 
+ .env.local file ).
+
+ Shows loading screen with food trivia while data is being fetched.
+*/
 
 'use client';
 
@@ -13,12 +19,16 @@ import Image from 'next/image';
 import { Recipe } from '@/types/Recipe';
 
 const RecipeDetailPage = () => {
+
   const params = useParams();
   const searchParams = useSearchParams();
+
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [recipeNutrition, setRecipeNutrition] = useState<any>(null);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
   const [trivia, setTrivia] = useState<string | null>(null);
 
   // Calculated values for nutrition chart
@@ -100,7 +110,7 @@ const RecipeDetailPage = () => {
         }
 
         // Simulate loading delay for trivia display
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 4000));
       } catch (err) {
         console.error('Error loading recipe:', err);
         setError('Failed to load recipe details. Please try again later.');
@@ -160,38 +170,41 @@ const RecipeDetailPage = () => {
           boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
         }}>
         <div className="bg-white bg-opacity-85 rounded-lg p-5 content-overlay">
-          {/* Title and Favorite Icon Row */}
+
+          {/* Title */}
           <div className="flex items-center justify-center mb-8">
             <h1 className="text-4xl font-bold text-purple-600 mr-4 border-b-2 border-purple-600 pb-2">{recipe.title}</h1>
           </div>
 
           {/* Row 1: Image & Description */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Column 1: Recipe Image */}
-            <div className="flex justify-center">
-              {recipe.image ? (
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  className="w-full h-auto max-w-sm rounded-lg shadow-lg border-2 border-purple-200"
-                />
-              ) : (
-                <div className="w-full h-64 max-w-sm rounded-lg shadow-lg border-2 border-purple-200 bg-gray-100 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-20 w-20 text-gray-400"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              )}
-            </div>
+              {/* Column 1: Recipe Image */}
+              <div className="flex justify-center">
+                {recipe.image ? (
+                  <Image
+                    src={recipe.image}
+                    alt={recipe.title}
+                    width={300}
+                    height={200}
+                    className="w-full h-auto max-w-sm rounded-lg shadow-lg border-2 border-purple-200 object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-64 max-w-sm rounded-lg shadow-lg border-2 border-purple-200 bg-gray-100 flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-20 w-20 text-gray-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
 
             {/* Column 2: Short Description and Icons */}
             <div className="p-6 bg-purple-50 rounded-lg shadow-md space-y-6">
@@ -229,7 +242,7 @@ const RecipeDetailPage = () => {
                 {/* Vegan icon for vegan recipes */}
                 {recipe.vegan && (
                   <div className="flex items-center space-x-2 relative group">
-                    <img src="/icon/vegan.png" alt="Vegan Icon" className="w-8 h-8" />
+                    <Image src="/icon/vegan.png" alt="Vegan Icon" width={32} height={32} />
                     <div className="absolute left-1/2 transform -translate-x-1/2 top-10 bg-green-600 text-white text-xs font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                       100% Vegan!
                     </div>
@@ -239,7 +252,7 @@ const RecipeDetailPage = () => {
                 {/* Popular icon for very popular recipes */}
                 {recipe.veryPopular && (
                   <div className="flex items-center space-x-2 relative group">
-                    <img src="/icon/popular.png" alt="Popular Icon" className="w-8 h-8" />
+                    <Image src="/icon/popular.png" alt="Popular Icon" width={32} height={32} />
                     <div className="absolute left-1/2 transform -translate-x-1/2 top-10 bg-red-600 text-white text-xs font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                       Very popular!
                     </div>
@@ -249,7 +262,7 @@ const RecipeDetailPage = () => {
                 {/* Cheap icon for cheap recipes */}
                 {recipe.cheap && (
                   <div className="flex items-center space-x-2 relative group">
-                    <img src="/icon/cheap.png" alt="Cheap Icon" className="w-8 h-8" />
+                    <Image src="/icon/cheap.png" alt="Cheap Icon" width={32} height={32} />
                     <div className="absolute left-1/2 transform -translate-x-1/2 top-10 bg-yellow-600 text-white text-xs font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                       Very cheap!
                     </div>
@@ -259,7 +272,7 @@ const RecipeDetailPage = () => {
                 {/* Healthy icon for healthy recipes */}
                 {recipe.veryHealthy && (
                   <div className="flex items-center space-x-2 relative group">
-                    <img src="/icon/healthy.png" alt="Healthy Icon" className="w-8 h-8" />
+                    <Image src="/icon/healthy.png" alt="Healthy Icon" width={32} height={32} />
                     <div className="absolute left-1/2 transform -translate-x-1/2 top-10 bg-green-600 text-white text-xs font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                       Healthy Choice!
                     </div>
@@ -301,7 +314,7 @@ const RecipeDetailPage = () => {
                             {step.equipment.map((equipment, idx) => (
                               <div key={`${step.number}-equipment-${idx}`} className="flex items-center my-2">
                                 {equipment.image && (
-                                  <img 
+                                  <Image 
                                     src={`${equipment.image}`} 
                                     alt={equipment.name} 
                                     className="w-12 h-12 rounded-full mr-2"

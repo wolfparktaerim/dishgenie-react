@@ -1,6 +1,10 @@
 // src/app/page.tsx
 
-// This is the home page of the app
+/*
+  This is the home screen of the entire application.
+
+  It consists of multiple components: Navigation bar, carousel, tag line, video modal, ... and footer.
+*/
 
 'use client';
 import { useState, useEffect } from 'react';
@@ -12,11 +16,14 @@ import TagLine from '../components/TagLine';
 import LoginModal from '../components/modals/LoginModal';
 import VideoModal from '../components/modals/VideoModal';
 
-// const xxx = useState('something') is like const xxx = ref('something')
+// const xxx = useState('something') in React.js is like const xxx = ref('something') in Vue.js
+
 export default function Home() {
+
   const [showLogin, setShowLogin] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const [videoId] = useState('zw8Ao6VfDog');
+
+  const [videoId] = useState('zw8Ao6VfDog');                    // Video ID (Youtube Video)
   const [isAuthenticated, setIsAuthenticated] = useState(true); // Default authentication state
 
   useEffect(() => {
@@ -45,6 +52,7 @@ export default function Home() {
 
   return (
     <div className="relative">
+      
       {/* Login Modal */}
       {showLogin && <LoginModal onLogin={()=>handleLogin()} onClose={() => setShowLogin(false)} />}
 

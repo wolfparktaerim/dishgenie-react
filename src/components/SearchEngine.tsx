@@ -1,3 +1,12 @@
+// src/components/SearchEngine.tsx
+
+/*
+  This is the recipe search engine component that allows users to find recipes based on the ingredients typed in, cusine type chosen, dietary preference chosen, intolerance selected OR get one random recipe.
+ 
+  Fetches recipe data from Spoonacular API based on user query and return all the recipe results back to the main view of Search recipe page to handle later.
+*/
+
+
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Recipe, SearchEngineProps } from '@/types/Recipe';

@@ -43,7 +43,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   // Login function
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      // In a real app, you would make an API call here
       // For demo purposes, we'll simulate a successful login with a mock user
       if (email && password) {
         setState({

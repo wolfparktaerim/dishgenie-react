@@ -1,5 +1,17 @@
 // src/components/layout/Navigation.tsx
 
+/*
+  This is the Navigation bar component, it is present in every page of the app.
+
+  It behaves differently in 4 situations:
+
+    - Large Screen, user authenticated: shows a standard navigation bar with 5 tabs (Search, Discover, Mini Game, Saved and User Profile)
+    - Large Screen, user not authenticated: shows a navigation bar with 2 tabs (How It Works & Log In)
+    - Small Screen, user authenticated: a humburger toggle button that can extend into a menu of 5 tabs (Search, Discover, Mini Game, Saved and User Profile)
+    - Small Screen, user not authenticated: a humburger toggle button that can extend into a menu of 2 tabs (How It Works & Log In)
+    
+*/
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';

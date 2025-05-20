@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 .animate-up {
   animation: slideUp 1s ease-out forwards;
   opacity: 0;
