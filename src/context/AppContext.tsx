@@ -1,5 +1,12 @@
 // src/context/AppContext.tsx   
 
+/*
+  Provides global app state (auth, user, theme) via React Context.
+  - Wrap your app with <AppProvider> to enable access.
+  - Use `useAppContext()` to read/update state (e.g. login, logout, toggleTheme).
+*/
+
+
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';

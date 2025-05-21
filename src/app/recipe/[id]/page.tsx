@@ -1,12 +1,12 @@
 // src/app/recipe/page.tsx
 
 /*
- Recipe detail page displaying complete information about a recipe including basic information, ingredients, instructions, and nutrition facts.
- 
- Fetches recipe data from Spoonacular API and nutrition data from Edamam API (API keys are located in the 
- .env.local file ).
+  Recipe detail page displaying complete information about a recipe including basic information, ingredients, instructions, and nutrition facts.
+  
+  Fetches recipe data from Spoonacular API and nutrition data from Edamam API (API keys are located in the 
+  .env.local file ).
 
- Shows loading screen with food trivia while data is being fetched.
+  Shows loading screen with food trivia while data is being fetched.
 */
 
 'use client';
@@ -181,11 +181,9 @@ const RecipeDetailPage = () => {
               {/* Column 1: Recipe Image */}
               <div className="flex justify-center">
                 {recipe.image ? (
-                  <Image
+                  <img
                     src={recipe.image}
-                    alt={recipe.title}
-                    width={300}
-                    height={200}
+                    alt="recipe.title"
                     className="w-full h-auto max-w-sm rounded-lg shadow-lg border-2 border-purple-200 object-cover"
                   />
                 ) : (
@@ -314,7 +312,7 @@ const RecipeDetailPage = () => {
                             {step.equipment.map((equipment, idx) => (
                               <div key={`${step.number}-equipment-${idx}`} className="flex items-center my-2">
                                 {equipment.image && (
-                                  <Image 
+                                  <img
                                     src={`${equipment.image}`} 
                                     alt={equipment.name} 
                                     className="w-12 h-12 rounded-full mr-2"

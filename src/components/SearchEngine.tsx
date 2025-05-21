@@ -2,8 +2,10 @@
 
 /*
   This is the recipe search engine component that allows users to find recipes based on the ingredients typed in, cusine type chosen, dietary preference chosen, intolerance selected OR get one random recipe.
- 
+  
   Fetches recipe data from Spoonacular API based on user query and return all the recipe results back to the main view of Search recipe page to handle later.
+
+  To use, import it via ` import SearchEngine from '@/components/SearchEngine' ` and include `<SearchEngine />` in your TSX. 
 */
 
 

@@ -1,9 +1,10 @@
 // src/app/search/page.tsx 
 
 /*
- Search recipe page that organizes other search-recipe-related components.
+  Search recipe page that organizes other search-recipe-related components.
  
- It includes the navigation component, a (fancy) animated title component, search engine component and the recipe cards component. 
+   It includes the navigation component, a (fancy) animated title component, search engine component and the recipe cards component. 
+  
 */
 
 'use client';

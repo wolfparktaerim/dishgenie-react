@@ -6,6 +6,8 @@
     Basic information includes: recipe image, recipe name (title), preparation time (in minutes), serving size, and etc
 
     On the top right side of the image there is also a badge section that display the 'badges' of the recipe, to show whether the recipe is 'veryHealthy', 'veryPopular' and etc.
+
+    To use, import it via ` import RecipeCard from '@/components/RecipeCard' ` and include `<RecipeCard />` in your TSX. 
 */
 
 import React from 'react';
